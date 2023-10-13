@@ -1,0 +1,35 @@
+{
+	"manifest_version": 3,
+	"name": "Moonshine",
+	"short_name": "Moonshine",
+	"description": "Watch YouTube Videos with Ad-Blocker ON",
+	"version": "0.0.1",
+	"icons": {
+		"16": "images/moonshine16.png",
+		"32": "images/moonshine32.png",
+		"48": "images/moonshine48.png",
+		"128": "images/moonshine128.png"
+	},
+	"action": {
+		"default_title": "Moonshine"
+	},
+	"permissions": [
+		"activeTab",
+		"scripting"
+	],
+	"background": {
+		"service_worker": "scripts/background.js"
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"http://*.youtube.com/*",
+				"https://*.youtube.com/*"
+			],
+			"js": [
+				"scripts/content.js"
+			],
+			"run_at": "document_end"
+		}
+	]
+}
